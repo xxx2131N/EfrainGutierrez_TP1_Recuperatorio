@@ -8,9 +8,11 @@ public class plataformeo : MonoBehaviour
     [SerializeField] private Transform punto1;
     [SerializeField] private Transform punto2;
     private Transform puntoDestino;
+    private float velocidadOriginal;
 
     void Start()
     {
+        velocidadOriginal = velociadad;
         if(punto1 != null && punto2!= null)
         {
             transform.position = punto1.position;
@@ -33,6 +35,17 @@ public class plataformeo : MonoBehaviour
             {
                 puntoDestino = punto2;
             }
+        }
+    }
+    public void ActivarFreez(bool activar)
+    {
+        if (activar)
+        {
+            velociadad = velocidadOriginal /2;
+        }
+        else
+        {
+            velociadad= velocidadOriginal;
         }
     }
 }

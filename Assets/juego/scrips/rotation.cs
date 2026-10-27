@@ -3,10 +3,12 @@ using UnityEngine;
 public class rotation : MonoBehaviour
 {
     [SerializeField] private float Velocidad = 90;
+    private float velocidadOriginal;
     private Vector3 rotacionObjetivo;
     private bool girando= false;
     void Start()
     {
+        velocidadOriginal = Velocidad;
         rotacionObjetivo = transform.eulerAngles;
         Activar();
     }
@@ -40,5 +42,16 @@ public class rotation : MonoBehaviour
         }
         girando = true;
         Debug.Log("esta jirando");
+    }
+    public void ActivarFreez(bool activar)
+    {
+        if (activar)
+        {
+            Velocidad = velocidadOriginal /2 ;
+        }
+        else
+        {
+            Velocidad = velocidadOriginal;
+        }
     }
 }

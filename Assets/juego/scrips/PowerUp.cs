@@ -27,7 +27,7 @@ public class PowerUp : MonoBehaviour
         }
         foreach (rotation rotacion in rotaciones)
         {
-            if(rotacion != null && PerteneceAlaCapa(rotacion.GameObject))
+            if(rotacion != null && PerteneceAlaCapa(rotacion.gameObject))
             {
                 rotacion.ActivarFreez(true);
             }
@@ -37,7 +37,7 @@ public class PowerUp : MonoBehaviour
 
         foreach (plataformeo plataforma in plataformas)
         {
-            if (plataforma != null && PerteneceALaCapa(plataforma.gameObject))
+            if (plataforma != null && PerteneceAlaCapa  (plataforma.gameObject))
             {
                 plataforma.ActivarFreez(false);
             }
@@ -46,7 +46,7 @@ public class PowerUp : MonoBehaviour
 
         foreach (rotation rotacion in rotaciones)
         {
-            if (rotacion != null && PerteneceALaCapa(rotacion.gameObject)) 
+            if (rotacion != null && PerteneceAlaCapa(rotacion.gameObject)) 
             {
                 rotacion.ActivarFreez(false);
             }
@@ -58,7 +58,7 @@ public class PowerUp : MonoBehaviour
     }
     private bool PerteneceAlaCapa(GameObject objeto)
     {
-        return (capaObstaculos.value & (1 << object.layer) != 0);
+        return ((capaObstaculos.value & (1 << objeto.layer)) != 0);
     }
 
 }
