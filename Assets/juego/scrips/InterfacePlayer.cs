@@ -97,7 +97,13 @@ public class InterfacePlayer : MonoBehaviour
     {
         Gizmos.color = Color.yellow;
         Gizmos.DrawWireSphere(transform.position,DistanciaInter);
-
+    }
+    private void OnCollisionEnter(Collision collision)
+    {
+        if(collision.gameObject.layer == LayerMask.NameToLayer("lava"))
+        {
+            Destroy(gameObject);
+        }
     }
 
 }
