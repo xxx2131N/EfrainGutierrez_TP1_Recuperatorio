@@ -102,7 +102,11 @@ public class InterfacePlayer : MonoBehaviour
     {
         if(collision.gameObject.layer == LayerMask.NameToLayer("lava"))
         {
-            Destroy(gameObject);
+            MovimientoPlayer player = GetComponent<MovimientoPlayer>();
+            if(player != null)
+            {
+                player.Respawn();
+            }
         }
     }
 

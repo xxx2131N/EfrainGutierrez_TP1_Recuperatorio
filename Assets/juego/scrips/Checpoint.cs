@@ -2,15 +2,18 @@ using UnityEngine;
 
 public class Checpoint : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    private Renderer checkPointRender;
+    private void OnTriggerEnter(Collider other)
     {
-        
-    }
+        MovimientoPlayer Player = other.GetComponent<MovimientoPlayer>();
+        if (Player != null )
+        {
+           Player.SetSpawnPoint(transform);
+           if(checkPointRender != null)
+            {
+                checkPointRender.material.color = Color.yellow;
+            }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        }
     }
 }

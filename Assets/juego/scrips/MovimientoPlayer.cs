@@ -4,6 +4,7 @@ public class MovimientoPlayer : MonoBehaviour
 {
     [SerializeField] private float velocidad = 5;
     [SerializeField] private float FuerzaSalto =5;
+    private Transform spawnPoint;
 
     [Header ("la camara")]
     [SerializeField] private Transform camara;
@@ -15,6 +16,7 @@ public class MovimientoPlayer : MonoBehaviour
     void Start()
     {
         rb= GetComponent<Rigidbody>();
+        spawnPoint = transform;
 
         Cursor.lockState= CursorLockMode.Locked;
         Cursor.visible= false;
@@ -70,5 +72,16 @@ public class MovimientoPlayer : MonoBehaviour
         {
             rb.AddForce(Vector3.up * FuerzaSalto,ForceMode.Impulse);
         }
+    }
+    public void SetSpawnPoint(Transform newSpawnPoint)
+    {
+        spawnPoint = newSpawnPoint;
+    }
+    public void Respawn()
+    {
+        if(spawnPoint == null) return;
+        rb.linearVelocity = Vector3.zero;
+        rb.angularVelocity = Vector3.zero;
+        transform.position = spawnPoint.position + Vector3.up * 1.5f;
     }
 }
